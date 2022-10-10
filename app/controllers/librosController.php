@@ -78,5 +78,6 @@ class LibrosController {
         $generos = $this->generosModel->getAll();
         $this->librosView->showLibrosFiltrados($libros, $generos);
     }
-    
+
+  
 }

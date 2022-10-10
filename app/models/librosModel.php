@@ -22,7 +22,7 @@ class LibrosModel {
         // 3. obtengo los resultados
         $libros = $query->fetchAll(PDO::FETCH_OBJ); // devuelve un arreglo de objetos
         
-        return $libros;
+       return $libros;
     }
 
     function getLibroById($id){

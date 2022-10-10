@@ -1,6 +1,9 @@
 {include file="header.tpl"}
 
 <h1>{$titulo}</h1>
+<div>
+    <a href="Agregar_Libro" type='button' class='btn btn-primary ml-auto'>Agregar Libro</a>
+</div>
 
 <div>
     <form action="Filtrar" method="POST">
@@ -50,6 +53,3 @@
     </tbody>
 </table>
 
-<div>
-    <a href="Agregar_Libro" type='button' class='btn btn-primary ml-auto'>Agregar Libro</a>
-</div>

@@ -8,22 +8,15 @@ class GenerosView {
         $this->smarty = new Smarty(); // inicializo Smarty
     }
 
-    function showLibros($libros) {
-        $titulo = "Lista de Libros";
-        // asigno variables al tpl smarty
-        $this->smarty->assign('titulo', $titulo);
-        $this->smarty->assign('libros', $libros);
+    
 
+    function showGenero($id) {
+        $titulo = "Resumen de Genero";
+         // asigno variables al tpl smarty
+        $this->smarty->assign('titulo', $titulo);
+        $this->smarty->assign('genero', $id);
         // mostrar el tpl
-        $this->smarty->display('librosList.tpl');
-    }
-
-    function showLibro($libro) {
-        $titulo = "Resumen de Libro";
-        $this->smarty->assign('titulo', $titulo);
-        $this->smarty->assign('libro', $libro);
-
-        $this->smarty->display('libroDetail.tpl');
+        $this->smarty->display('generoDetail.tpl');
     }
 
     function showFormAddBook(){
@@ -32,4 +25,38 @@ class GenerosView {
 
         $this->smarty->display('formAddBook.tpl');
     }
-}
+
+    function showGeneros($generos) {
+        $titulo= "Lista de generos";
+        $this->smarty->assign('titulo', $titulo);
+        $this->smarty->assign('generos', $generos);
+        $this->smarty->display('generosDisplay.tpl');
+    }
+
+    function showFormAddGenero(){
+        $accion = "guardar_en_bd";
+        $titulo = "Alta de genero";
+        $boton = "Guardar";
+        $genero= "genero";
+        $this->smarty->assign('accion', $accion);
+        $this->smarty->assign('titulo', $titulo);
+        $this->smarty->assign('boton', $boton);
+        $this->smarty->assign('genero', $genero);
+        $this->smarty->display('formAddGeneros.tpl');  
+    
+    }
+
+    function showFormActualizarGenero($genero){
+        $accion = "Modificar_Registro_genero";
+        $titulo = "Modificar genero";
+        $boton = "Guardarrrr";
+        $this->smarty->assign('accion', $accion);
+        $this->smarty->assign('titulo', $titulo);
+        $this->smarty->assign('boton', $boton);
+        $this->smarty->assign('genero', $genero);
+        $this->smarty->display('formAddGeneros.tpl');  
+    }
+
+    
+
+}    
