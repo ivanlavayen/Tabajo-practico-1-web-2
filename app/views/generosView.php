@@ -26,10 +26,11 @@ class GenerosView {
         $this->smarty->display('formAddBook.tpl');
     }
 
-    function showGeneros($generos) {
+    function showGeneros($generos,$administradorIsLogged) {
         $titulo= "Lista de generos";
         $this->smarty->assign('titulo', $titulo);
         $this->smarty->assign('generos', $generos);
+        $this->smarty->assign('administradorIsLogged',$administradorIsLogged);
         $this->smarty->display('generosDisplay.tpl');
     }
 
@@ -49,7 +50,7 @@ class GenerosView {
     function showFormActualizarGenero($genero){
         $accion = "Modificar_Registro_genero";
         $titulo = "Modificar genero";
-        $boton = "Guardarrrr";
+        $boton = "Guardar";
         $this->smarty->assign('accion', $accion);
         $this->smarty->assign('titulo', $titulo);
         $this->smarty->assign('boton', $boton);

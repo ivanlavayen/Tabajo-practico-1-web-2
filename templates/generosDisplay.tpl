@@ -2,7 +2,9 @@
 
 <h1>{$titulo}</h1>
 <div>
-    <a href="Agregar_Genero" type='button' class='btn btn-primary ml-auto'>Agregar genero</a>
+    {if $administradorIsLogged==true}
+        <a href="Agregar_Genero" type='button' class='btn btn-primary ml-auto'>Agregar genero</a>
+    {/if}
 </div>
 
 
@@ -20,12 +22,21 @@
                    
                 <td>{$genero->genero}</td>
         
-                <td>
+                
+                {if $administradorIsLogged==true}
+                    <td>    
                     <a href="Ver_genero/{$genero->id}" type='button' class='btn btn-primary ml-auto'>VER</a>
                     <a href="Editar_genero/{$genero->id}" type='button' class='btn btn-success ml-auto'>EDITAR</a>
                     <a href="Eliminar_genero/{$genero->id}" type='button' class='btn btn-danger ml-auto'>ELIMINAR</a>
+                    </td>
+                {else}
+                    <td>
+                    <a href="Ver_genero/{$genero->id}" type='button' class='btn btn-primary ml-auto'>VER</a>
+                    </td>
+                   
                 
-                </td>
+                {/if}
+                
             </tr>   
         {/foreach}
     

@@ -1,7 +1,10 @@
 <?php
-require_once ('./templates/home.tpl');
+
 require_once ('app/controllers/librosController.php');
+require_once ('app/controllers/homeController.php');
 require_once ('app/controllers/generosController.php');
+require_once ('app/controllers/loginController.php');
+
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
 $action = 'Home'; // acción por defecto
@@ -13,15 +16,29 @@ if (!empty($_GET['action'])) {
 $params = explode('/', $action);
 
 // instancio los controller que existen
+
 $librosController = new LibrosController();
 $generosController = new GenerosController();
+$loginController = new LoginController();
 
-// tabla de ruteo parte libros
 switch ($params[0]) {
+    // tabla de ruteo parte login
     case 'Home':
-        echo "bienvenido a la libreria on line";
-
+        $homeController = new HomeController();
+        $homeController->showHome();
         break;
+    case 'Login':
+        $loginController->openFormLoging();
+        break;
+    case 'validate':
+        $loginController->userValidate(); 
+        break;
+    case 'Logout':
+        
+        $loginController->logout();
+        break;  
+        
+    // tabla de ruteo parte libros    
     case 'Libros':
         $librosController->showAllLibros();
         break;

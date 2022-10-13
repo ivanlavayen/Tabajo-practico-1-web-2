@@ -8,22 +8,23 @@ class LibrosView {
         $this->smarty = new Smarty(); // inicializo Smarty
     }
 
-    function showLibros($libros, $generos) {
+    function showLibros($libros, $generos,$administradorIsLogged) {
         $titulo = "Lista de Libros";
         // asigno variables al tpl smarty
         $this->smarty->assign('titulo', $titulo);
         $this->smarty->assign('libros', $libros);
         $this->smarty->assign('generos', $generos);
+        $this->smarty->assign('administradorIsLogged',$administradorIsLogged);
 
         // mostrar el tpl
         $this->smarty->display('librosList.tpl');
     }
 
-    function showLibro($libro) {
+    function showLibro($libro,$administradorIsLogged){
         $titulo = "Resumen de Libro";
         $this->smarty->assign('titulo', $titulo);
         $this->smarty->assign('libro', $libro);
-
+        $this->smarty->assign('administradorIsLogged',$administradorIsLogged);
         $this->smarty->display('libroDetail.tpl');
     }
 
@@ -39,7 +40,7 @@ class LibrosView {
     }
 
     function showFormUpdateBook($generos, $libro, $generoLibro){
-        var_dump($libro);
+    
         $accion = "Modificar_Registro";
         $titulo = "Modificacion de Libro";
         $boton = "Modificar";
@@ -52,10 +53,11 @@ class LibrosView {
         $this->smarty->display('formAddBook.tpl');
     }
 
-    function showLibrosFiltrados($libros, $generos){
+    function showLibrosFiltrados($libros, $generos, $administradorIsLogged){
         $titulo = "Lista de Libros por Genero: ";
         // asigno variables al tpl smarty
         $this->smarty->assign('titulo', $titulo);
+        $this->smarty->assign('administradorIsLogged',$administradorIsLogged);
         $this->smarty->assign('libros', $libros);
         $this->smarty->assign('generos', $generos);
 

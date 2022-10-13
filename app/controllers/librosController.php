@@ -2,27 +2,32 @@
 require_once 'app/models/librosModel.php';
 require_once 'app/models/generosModel.php';
 require_once 'app/views/librosView.php';
+require_once 'app/helpers/LoginHelper.php';
 
 class LibrosController {
     private $librosModel;
     private $generosModel;
     private $librosView;
+    private $loginHelper;
 
     public function __construct() {
         $this->librosModel = new LibrosModel();
         $this->generosModel = new GenerosModel();
         $this->librosView = new LibrosView();
+        $this->loginHelper= new LoginHelper();
     }
 
     function showAllLibros() {
         $libros = $this->librosModel->getAll();
         $generos = $this->generosModel->getAll();
-        $this->librosView->showLibros($libros, $generos);
+        $administradorIsLogged = $this->loginHelper->return_admin();
+        $this->librosView->showLibros($libros, $generos,$administradorIsLogged);
     }
 
     function showLibro($id){
         $libro = $this->librosModel->getLibroById($id);
-        $this->librosView->showLibro($libro);
+        $administradorIsLogged = $this->loginHelper->return_admin();
+        $this->librosView->showLibro($libro,$administradorIsLogged);
     }
 
     function showFormAddLibro(){
@@ -74,9 +79,10 @@ class LibrosController {
 
     function filtarLibrosPorGenero(){
         $id_genero = $_POST['genero'];
+        $administradorIsLogged = $this->loginHelper->return_admin();
         $libros = $this->librosModel->getLibroByIdGenero($id_genero);
         $generos = $this->generosModel->getAll();
-        $this->librosView->showLibrosFiltrados($libros, $generos);
+        $this->librosView->showLibrosFiltrados($libros, $generos, $administradorIsLogged);
     }
 
   

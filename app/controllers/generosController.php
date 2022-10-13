@@ -2,23 +2,25 @@
 
 require_once 'app/models/generosModel.php';
 require_once 'app/views/generosView.php';
-
+require_once 'app/helpers/LoginHelper.php';
 class GenerosController {
     
     private $generosModel;
     private $generosView;
-    
+    private $loginHelper;
 
     public function __construct() {
        
         $this->generosModel = new GenerosModel();
         $this->generosView = new GenerosView();
+        $this->loginHelper= new LoginHelper();
     }
 
     function showAllGeneros() {
         
         $generos = $this->generosModel->getAll();
-        $this->generosView->showGeneros($generos);
+        $administradorIsLogged = $this->loginHelper->return_admin();
+        $this->generosView->showGeneros($generos,$administradorIsLogged);
     }
 
     function showFormAgregarGeneros(){

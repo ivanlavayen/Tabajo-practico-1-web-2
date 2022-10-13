@@ -2,8 +2,10 @@
 
 <h1>{$titulo}</h1>
 <div>
+{if $administradorIsLogged==true}
     <a href="Agregar_Libro" type='button' class='btn btn-primary ml-auto'>Agregar Libro</a>
-</div>
+{/if}
+    </div>
 
 <div>
     <form action="Filtrar" method="POST">
@@ -41,12 +43,18 @@
                         <td>{$genero->genero}</td>
                     {/if}
                 {/foreach}
+                {if $administradorIsLogged==true}
                 <td>
                     <a href="Ver_Libro/{$libro->id}" type='button' class='btn btn-primary ml-auto'>VER</a>
                     <a href="Editar_Libro/{$libro->id}" type='button' class='btn btn-success ml-auto'>EDITAR</a>
                     <a href="Eliminar_Libro/{$libro->id}" type='button' class='btn btn-danger ml-auto'>ELIMINAR</a>
-                    
                 </td>
+                {else}
+                    <td>
+                    <a href="Ver_Libro/{$libro->id}" type='button' class='btn btn-primary ml-auto'>VER</a>
+                    <td>
+                {/if}    
+
             </tr>   
         {/foreach}
 

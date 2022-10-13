@@ -28,9 +28,16 @@
                   <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="Generos">Listado de Generos</a>
                   </li>
+                  {if !isset($smarty.session.email)}
                   <li class="nav-item">
+                  
                     <a class="nav-link" aria-current="page" href="Login">Login</a>
+                  {else}
+                    <a class="nav-link" aria-current="page" href="Logout">Logout</a>
+                  
+                    
                   </li>
+                  {/if}
                 </ul>
               </div>
             </div>
