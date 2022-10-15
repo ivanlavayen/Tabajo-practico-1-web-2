@@ -8,6 +8,9 @@ class loginView {
         $this->smarty = new Smarty(); // inicializo Smarty
     }
     function showFormLogin($error = ""){
+        $titulo = "Login";
+        $this->smarty->assign('titulo', $titulo);
+
         $this->smarty->assign('error',$error);
         $this->smarty->display("templates/formLogin.tpl");
                   

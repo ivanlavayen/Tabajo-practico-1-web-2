@@ -1,5 +1,5 @@
 {include file="header.tpl"}
-
+<h1>{$titulo}</h1>
 <div class="mt-5 w-25 mx-auto">
     <form method="POST" action="validate">
         <div class="form-group">

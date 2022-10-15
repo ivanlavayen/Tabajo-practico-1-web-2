@@ -30,7 +30,7 @@ class LibrosView {
 
     function showFormAddBook($generos){
         $accion = "Mandar_BD";
-        $titulo = "Alta de Libro";
+        $titulo = "Alta de Libros";
         $boton = "Guardar";
         $this->smarty->assign('titulo', $titulo);
         $this->smarty->assign('boton', $boton);
